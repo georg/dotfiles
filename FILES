@@ -1,0 +1,13 @@
+.ackrc
+.bash_profile
+.bashrc
+.gitconfig
+.gitignore
+.git_template
+.inputrc
+.powconfig
+.rvmrc
+.slate.js
+.vim
+.vimrc
+bin

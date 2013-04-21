@@ -1,0 +1,36 @@
+[user]
+  name = Georg Friedrich
+  email = georg@wobolando.com
+[alias]
+  co = checkout
+  cb = checkout -b
+  ci = commit -v
+  ca = commit -av
+  st = status -sb
+  up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`
+  log-graph = log --graph --all --decorate
+  ctags = !.git/hooks/ctags
+  amend = commit --amend -C HEAD
+[apply]
+  whitespace = strip
+[branch]
+  autosetupmerge = true
+[color]
+  diff = auto
+  grep = auto
+  branch = auto
+  interactive = auto
+  pager = true
+  showbranch = auto
+  status = auto
+  ui = auto
+[mergetool]
+  keepBackup = false
+[push]
+  default = tracking
+[rerere]
+  enabled = 1
+[core]
+  excludesfile = ~/.gitignore
+[init]
+  templatedir = ~/.git_template

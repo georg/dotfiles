@@ -1,0 +1,6 @@
+--sort-files
+
+--type-add=ruby=builder,rake
+--type-set=cucumber=feature
+--type-set=r=r
+--type-set=css=scss
