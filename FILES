@@ -5,6 +5,8 @@
 .gitignore
 .git_template
 .inputrc
+.liquidprompt
+.liquidpromptrc
 .powconfig
 .rvmrc
 .slate.js

@@ -58,30 +58,6 @@ alias irb='irb --readline -r irb/completion'
 # Capistrano
 alias cppassword="grep password config/deploy.rb | awk -F\\\" '{print \$2}' | pbcopy"
 
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
-
-function proml {
-  local YELLOW="\[\033[0;33m\]"
-  local   BLUE="\[\033[0;34m\]"
-  local  GREEN="\[\033[0;32m\]"
-  case $TERM in
-    xterm*)
-    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-    ;;
-    *)
-    TITLEBAR=''
-    ;;
-  esac
-
-  PS1="${TITLEBAR}$GREEN\h:$BLUE\w $YELLOW\$(parse_git_branch)$GREEN\$ "
-  PS2='> '
-  PS4='+ '
-}
-proml
-unset proml
-
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
@@ -89,3 +65,6 @@ fi
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+source "$HOME/.liquidprompt/liquidprompt"
+
