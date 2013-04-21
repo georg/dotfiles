@@ -36,22 +36,15 @@ esac
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
-    #alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
 
     alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
 
 # Alias definitions
 alias gitrm='git status | grep deleted | awk '\''{print $3}'\'' | xargs git rm'
 alias c='bc -l <<< '
-alias run_mongo='mongod run --config /usr/local/Cellar/mongodb/1.4.4-x86_64/mongod.conf'
 alias sunspot-solr='sunspot-solr -d ~/.solr -s ~/.solr'
 #alias s='bundle exec spec'
-alias s2='TEST_ENV_NUMBER=2 rspec'
-alias s3='TEST_ENV_NUMBER=3 rspec'
 alias rps='rake parallel:spec[9]'
 alias stage='cap staging current_branch deploy'
 
@@ -96,5 +89,3 @@ fi
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-source ~/.bash/git_branch_cleanup
