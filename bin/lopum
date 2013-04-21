@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# List of possibly unused methods
+# Georg Friedrich
+# 
+# Scans .rb files for method definitions and prints them if they are not used
+# in .rb, .erb or .builder files.
+#
+# If no directories are specified, lopum will scan the following directories:
+#   app, config and lib.
+
+if [ -z $@ ]; then
+  directories="app config lib"
+else
+  directories=$@
+fi
+
+methods=`pcregrep -ro2 --include='\.rb$' "def\s(self\.)?(\w+)" $directories`
+for method in $methods; do
+  name=`echo $method | pcregrep -o1 ":(\w+)$"`
+  count=`pcregrep -r --include='\.e?rb$' --include='\.builder$' $name $directories | wc -l`
+  if [ $count == "1" ]; then
+    echo $method
+  fi
+done
+
