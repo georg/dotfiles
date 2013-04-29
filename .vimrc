@@ -141,6 +141,10 @@ function! AlignLine(line, sep, maxpos, extra)
 endfunction
 " }}}
 
+" Syntax changes Ruby 1.8 -> 1.9 {{{
+command! -range Ruby19ify <line1>,<line2>s/:\([^ ]\+\) \+=> \+/\1: /g | :noh
+" }}}
+
 " R plugin {{{
 let vimrplugin_screenplugin = 0
 " }}}
