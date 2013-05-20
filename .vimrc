@@ -77,6 +77,12 @@ set backupdir=~/.vim/backup
 set undodir=~/.vim/backup
 set directory=~/.vim/backup
 
+" yankstack
+nmap <ESC>p <Plug>yankstack_substitute_older_paste
+nmap <ESC>P <Plug>yankstack_substitute_older_paste
+nmap <ESC>n <Plug>yankstack_substitute_newer_paste
+nmap <ESC>N <Plug>yankstack_substitute_newer_paste
+
 " Rainbox Parentheses {{{
 nnoremap <leader>R :RainbowParenthesesToggle<cr>
 let g:rbpt_colorpairs = [
