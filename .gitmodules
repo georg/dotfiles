@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/vim-yankstack"]
 	path = .vim/bundle/vim-yankstack
 	url = git://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule ".vim/bundle/CoVim"]
+	path = .vim/bundle/CoVim
+	url = git://github.com/FredKSchott/CoVim.git
