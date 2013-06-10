@@ -1,4 +1,6 @@
 #!/bin/sh
+git submodule update --init
+
 for file in `cat FILES`; do
   source="$PWD/$file"
   target="$HOME/$file"
