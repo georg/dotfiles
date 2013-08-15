@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/georgf/Projects/redbubble/public/stylesheets/sass'
+let g:netrw_dirhist_2='/Users/georgf/Projects/data-teamrb/spec/controllers'
+let g:netrw_dirhist_3='/Users/georgf/Projects/data-teamrb/spec'
+let g:netrw_dirhist_4='/Users/georgf/Projects/data-teamrb/spec/integration'
+let g:netrw_dirhist_5='/Users/georgf/Projects/data-teamrb/spec'
+let g:netrw_dirhist_6='/Users/georgf/Projects/data-teamrb/spec/models'
+let g:netrw_dirhist_7='/Users/georgf/Projects/data-teamrb/lib/tasks'

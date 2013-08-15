@@ -21,6 +21,7 @@ set showcmd     " display incomplete commands
 set undofile
 set wildmenu
 set wildmode=full
+set foldlevelstart=99
 
 "" Whitespace
 set nowrap                      " don't wrap lines
@@ -30,6 +31,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮
 
+let ruby_fold=1
 let ruby_space_errors = 1
 let c_space_errors = 1
 
@@ -43,8 +45,6 @@ set ignorecase   " searches are case insensitive...
 set smartcase    " ... unless they contain at least one capital letter
 nnoremap <leader><space> :noh<cr> " clear search
 
-" Ack
-nnoremap <leader>a :Ack 
 nnoremap <leader>ft Vatzf
 nnoremap <leader>v V`]
 inoremap jj <ESC> " Quick escape
@@ -79,9 +79,9 @@ set directory=~/.vim/backup
 
 " yankstack
 nmap <ESC>p <Plug>yankstack_substitute_older_paste
-nmap <ESC>P <Plug>yankstack_substitute_older_paste
+nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <ESC>n <Plug>yankstack_substitute_newer_paste
-nmap <ESC>N <Plug>yankstack_substitute_newer_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Rainbox Parentheses {{{
 nnoremap <leader>R :RainbowParenthesesToggle<cr>
@@ -119,38 +119,67 @@ if has("statusline") && !&cp
   set statusline+=%(%c-%v,\ %l\ of\ %L,\ (%o)\ %P\ 0x%B\ (%b)%)
 endif
 
-" Hash rocket alignments {{{
-command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
-vnoremap <silent> <Leader>a :Align<CR>
-function! AlignSection(regex) range
-  let extra = 1
-  let sep = empty(a:regex) ? '=' : a:regex
-  let maxpos = 0
-  let section = getline(a:firstline, a:lastline)
-  for line in section
-    let pos = match(line, ' *'.sep)
-    if maxpos < pos
-      let maxpos = pos
-    endif
-  endfor
-  call map(section, 'AlignLine(v:val, sep, maxpos, extra)')
-  call setline(a:firstline, section)
-endfunction
-
-function! AlignLine(line, sep, maxpos, extra)
-  let m = matchlist(a:line, '\(.\{-}\) \{-}\('.a:sep.'.*\)')
-  if empty(m)
-    return a:line
-  endif
-  let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
-  return m[1] . spaces . m[2]
-endfunction
-" }}}
-
 " Syntax changes Ruby 1.8 -> 1.9 {{{
 command! -range Ruby19ify <line1>,<line2>s/:\([^ ]\+\) \+=> \+/\1: /g | :noh
 " }}}
 
 " R plugin {{{
 let vimrplugin_screenplugin = 0
+let g:r_indent_align_args = 0
+" }}}
+
+" Unite {{{
+
+" simulate ctrlp
+let g:unite_enable_start_insert = 1
+let g:unite_winheight = 10
+let g:unite_split_rule = 'botright'
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+let g:unite_source_history_yank_enable = 1
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--noheading --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+nnoremap [unite] <Nop>
+nmap     <C-f> [unite]
+
+nnoremap <silent> <C-p>     :<C-u>Unite
+      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite
+      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite
+      \ grep<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite
+      \ -buffer-name=register register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite
+      \ outline<CR>
+nnoremap <silent> [unite]d  :<C-u>Unite
+      \ -buffer-name=files -default-action=lcd directory_mru<CR>
+nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord
+      \ tag file_rec/async<CR>
+nnoremap <silent> [unite]y  :<C-u>Unite
+      \ history/yank <CR>
+nnoremap <silent> [unite]s  :<C-u>Unite
+      \ -buffer-name=files -no-split
+      \ jump_point file_point buffer_tab
+      \ file_rec:! file file/new file_mru<CR>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  nmap <buffer> <ESC>      <Plug>(unite_exit)
+  imap <buffer> <ESC>      <Plug>(unite_exit)
+  imap <buffer> jj         <Plug>(unite_insert_leave)
+
+  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 " }}}

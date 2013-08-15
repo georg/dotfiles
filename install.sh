@@ -12,3 +12,8 @@ for file in `cat FILES`; do
   fi
 done
 
+# Compile vimproc
+cd .vim/bundle/vimproc.vim/
+make -f make_mac.mak
+cd -
+
