@@ -24,8 +24,14 @@
   showbranch = auto
   status = auto
   ui = auto
+[difftool]
+  cmd = "opendiff $LOCAL $REMOTE"
+[merge]
+  tool = opendiff
 [mergetool]
   keepBackup = false
+[mergetool "opendiff"]
+  cmd = "opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED"
 [push]
   default = tracking
 [rerere]
