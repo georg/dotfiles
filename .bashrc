@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$HOME/.rvm/bin:/Library/Ruby/bin:/usr/local/mysql/bin:/usr/local/bin:$PATH:/usr/local/sbin"
+export PATH="$HOME/bin:/Library/Ruby/bin:/usr/local/mysql/bin:/usr/local/bin:$PATH:/usr/local/sbin"
 export JRUBY_HOME="~/src/jruby"
 export HIVE_HOME=/usr/local/Cellar/hive/0.9.0/libexec
 export HADOOP_HOME=/usr/local/Cellar/hadoop/1.0.3/libexec
@@ -88,4 +88,8 @@ fi
 
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+if [ -d "$HOME/.rvm" ]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+  export PATH="$HOME/.rvm/bin:$PATH"
+fi
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
