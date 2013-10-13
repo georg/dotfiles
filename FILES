@@ -10,4 +10,5 @@
 .slate.js
 .vim
 .vimrc
+.zephyros.rb
 bin
