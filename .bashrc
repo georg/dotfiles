@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:/Library/Ruby/bin:/usr/local/mysql/bin:/usr/local/bin:$PATH:/usr/local/sbin"
+export PATH="$HOME/bin:/Library/Ruby/bin:/usr/local/bin:$PATH:/usr/local/sbin"
 export JRUBY_HOME="~/src/jruby"
 export HIVE_HOME=/usr/local/Cellar/hive/0.9.0/libexec
 export HADOOP_HOME=/usr/local/Cellar/hadoop/1.0.3/libexec
