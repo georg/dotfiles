@@ -1,6 +1,7 @@
 .ackrc
 .bash_profile
 .bashrc
+.gemrc
 .gitconfig
 .gitignore
 .git_template
