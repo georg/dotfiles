@@ -124,8 +124,9 @@ command! -range Ruby19ify <line1>,<line2>s/:\([^ ]\+\) \+=> \+/\1: /g | :noh
 " }}}
 
 " R plugin {{{
-let vimrplugin_screenplugin = 0
 let g:r_indent_align_args = 0
+let g:vimrplugin_assign = 0
+let g:r_syntax_folding = 1
 " }}}
 
 " Unite {{{
