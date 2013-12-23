@@ -181,5 +181,15 @@ function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+
+  " Disable cursor keys
+  inoremap <buffer> <Up>    <NOP>
+  inoremap <buffer> <Down>  <NOP>
+  inoremap <buffer> <Left>  <NOP>
+  inoremap <buffer> <Right> <NOP>
+  noremap  <buffer> <Up>    <NOP>
+  noremap  <buffer> <Down>  <NOP>
+  noremap  <buffer> <Left>  <NOP>
+  noremap  <buffer> <Right> <NOP>
 endfunction
 " }}}
