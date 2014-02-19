@@ -50,10 +50,6 @@
 	path = .vim/bundle/vim-yankstack
 	url = git://github.com/maxbrunsfeld/vim-yankstack.git
   branch = master
-[submodule ".vim/bundle/CoVim"]
-	path = .vim/bundle/CoVim
-	url = git://github.com/FredKSchott/CoVim.git
-  branch = master
 [submodule ".vim/bundle/vim-haml"]
 	path = .vim/bundle/vim-haml
 	url = git://github.com/tpope/vim-haml.git
