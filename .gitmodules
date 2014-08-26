@@ -130,3 +130,12 @@
 	path = .vim/bundle/Vim-R-plugin
 	url = https://github.com/vim-scripts/Vim-R-plugin.git
   branch = master
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git
+[submodule ".vim/vim-snippets"]
+	path = .vim/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/neomru.vim"]
+	path = .vim/bundle/neomru.vim
+	url = https://github.com/Shougo/neomru.vim.git
