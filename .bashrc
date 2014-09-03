@@ -1,17 +1,11 @@
-export PATH="$HOME/bin:/Library/Ruby/bin:/usr/local/bin:$PATH:/usr/local/sbin"
-export JRUBY_HOME="~/src/jruby"
-export HIVE_HOME=/usr/local/Cellar/hive/0.9.0/libexec
-export HADOOP_HOME=/usr/local/Cellar/hadoop/1.0.3/libexec
-export EDITOR="/usr/local/bin/vim"
-export LESSEDIT="mate -l %lm %f"
+if [ -f "/opt/boxen/env.sh" ]
+  then source "/opt/boxen/env.sh"
+fi
+export EDITOR="`brew --repository`/bin/vim"
 export LESS="-erX"
 export BROWSER="open /Applications/Safari.app"
 export LC_CTYPE=en_AU.UTF-8
 export LEFTRIGHT=1
-export NODE_PATH="/usr/local/lib/node_modules"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
@@ -45,15 +39,11 @@ alias gitrm='git status | grep deleted | awk '\''{print $3}'\'' | xargs git rm'
 alias c='bc -l <<< '
 alias sunspot-solr='sunspot-solr -d ~/.solr -s ~/.solr'
 #alias s='bundle exec spec'
-alias rps='rake parallel:spec[9]'
 alias stage='cap staging current_branch deploy'
 
 # Make up/down keys autocomplete
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
-
-# Ruby
-alias irb='irb --readline -r irb/completion'
 
 # Capistrano
 alias cppassword="grep password config/deploy.rb | awk -F\\\" '{print \$2}' | pbcopy"
@@ -88,8 +78,4 @@ fi
 
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
-if [ -d "$HOME/.rvm" ]; then
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-  export PATH="$HOME/.rvm/bin:$PATH"
-fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

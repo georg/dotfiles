@@ -7,7 +7,7 @@
   ci = commit -v
   ca = commit -av
   st = status -sb
-  up = !git fetch && git rebase -p origin/`git symbolic-ref HEAD | sed 's|.*/||'`
+  up = pull
   log-graph = log --graph --all --decorate
   ctags = !.git/hooks/ctags
   amend = commit --amend -C HEAD
@@ -33,10 +33,18 @@
 [mergetool "opendiff"]
   cmd = "opendiff $LOCAL $REMOTE -ancestor $BASE -merge $MERGED"
 [push]
-  default = tracking
+  default = simple
 [rerere]
   enabled = 1
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /opt/boxen/config/git/gitignore
 [init]
   templatedir = ~/.git_template
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
+[hub]
+  protocol = https
+
+[pull]
+rebase = preserve
+
