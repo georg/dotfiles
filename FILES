@@ -8,9 +8,6 @@
 .git_template
 .inputrc
 .powconfig
-.rvmrc
-.slate.js
 .vim
 .vimrc
-.phoenix.js
 bin
