@@ -14,10 +14,10 @@ else
   directories=$@
 fi
 
-methods=`pcregrep -ro2 --include='\.rb$' "def\s(self\.)?(\w+)" $directories`
+methods=`pcregrep -ro2 --buffer-size=102400 --include='\.rb$' "def\s(self\.)?(\w+)" $directories`
 for method in $methods; do
   name=`echo $method | pcregrep -o1 ":(\w+)$"`
-  count=`pcregrep -r --include='\.e?rb$' --include='\.builder$' --include='\.rake$' $name $directories | wc -l`
+  count=`pcregrep -r --buffer-size=102400 --include='\.e?rb$' --include='\.builder$' --include='\.rake$' $name $directories | wc -l`
   if [ $count == "1" ]; then
     echo $method
   fi
