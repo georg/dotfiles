@@ -80,3 +80,4 @@ fi
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
