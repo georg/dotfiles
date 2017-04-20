@@ -6,6 +6,7 @@ export LESS="-erX"
 export BROWSER="open /Applications/Safari.app"
 export LC_CTYPE=en_AU.UTF-8
 export LEFTRIGHT=1
+export AWS_DEFAULT_REGION=us-east-1
 
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
