@@ -139,3 +139,6 @@
 [submodule ".vim/bundle/neomru.vim"]
 	path = .vim/bundle/neomru.vim
 	url = https://github.com/Shougo/neomru.vim.git
+[submodule ".vim/bundle/csv.vim"]
+	path = .vim/bundle/csv.vim
+	url = https://github.com/chrisbra/csv.vim.git
