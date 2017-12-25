@@ -1,7 +1,4 @@
-if [ -f "/opt/boxen/env.sh" ]
-  then source "/opt/boxen/env.sh"
-fi
-export EDITOR="`brew --repository`/bin/vim"
+export EDITOR="/usr/local/bin/vim"
 export LESS="-erX"
 export BROWSER="open /Applications/Safari.app"
 export LC_CTYPE=en_AU.UTF-8
@@ -35,19 +32,9 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-# Alias definitions
-alias gitrm='git status | grep deleted | awk '\''{print $3}'\'' | xargs git rm'
-alias c='bc -l <<< '
-alias sunspot-solr='sunspot-solr -d ~/.solr -s ~/.solr'
-#alias s='bundle exec spec'
-alias stage='cap staging current_branch deploy'
-
 # Make up/down keys autocomplete
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
-
-# Capistrano
-alias cppassword="grep password config/deploy.rb | awk -F\\\" '{print \$2}' | pbcopy"
 
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
@@ -73,11 +60,9 @@ function proml {
 proml
 unset proml
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh
+[ -f /usr/local/share/chruby/auto.sh ] && source /usr/local/share/chruby/auto.sh

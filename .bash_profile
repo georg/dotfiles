@@ -3,7 +3,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/georgf/google-cloud-sdk/path.bash.inc'
+if [ -f '/Users/georgf/google-cloud-sdk/path.bash.inc' ]; then source '/Users/georgf/google-cloud-sdk/path.bash.inc'; fi
 
-# The next line enables bash completion for gcloud.
-source '/Users/georgf/google-cloud-sdk/completion.bash.inc'
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/georgf/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/georgf/google-cloud-sdk/completion.bash.inc'; fi

@@ -36,15 +36,15 @@
   default = simple
 [rerere]
   enabled = 1
-[core]
-  excludesfile = /opt/boxen/config/git/gitignore
 [init]
   templatedir = ~/.git_template
-[credential]
-  helper = /opt/boxen/bin/boxen-git-credential
 [hub]
   protocol = https
 
 [pull]
 rebase = preserve
 
+[credential]
+	helper = osxkeychain
+[diff]
+	renameLimit = 2580
