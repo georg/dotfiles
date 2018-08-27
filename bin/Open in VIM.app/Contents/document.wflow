@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input}	set the_path to quoted form of POSIX path of input	set cmd to "cd `dirname " &amp; the_path &amp; "` &amp;&amp; vim " &amp; the_path		tell application "System Events" to set terminalIsRunning to exists application process "Terminal"	tell application "Terminal"
+					<string>on run {input}	set the_path to quoted form of POSIX path of input	set cmd to "cd `dirname " &amp; the_path &amp; "`; vim " &amp; the_path		tell application "System Events" to set terminalIsRunning to exists application process "Terminal"	tell application "Terminal"
 		activate		if terminalIsRunning is true then			do script with command cmd		else			do script with command cmd in window 1		end if		activate	end tellend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
