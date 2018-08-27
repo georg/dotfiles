@@ -6,13 +6,32 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
+call plug#begin()
+Plug 'Shougo/denite.nvim'
+Plug 'flazz/vim-colorschemes'
+Plug 'chrisbra/csv.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'bingaman/vim-sparkup'
+Plug 'sickill/vim-pasta'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-scripts/rainbow_parentheses.vim'
+Plug 'jpalardy/vim-slime'
+call plug#end()
+
 syntax enable
 set encoding=utf-8
 set modelines=0
 
 set background=dark
 let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme c64
 
 set number
 set ruler       " show the cursor position all the time
@@ -129,68 +148,29 @@ let g:vimrplugin_assign = 0
 let g:r_syntax_folding = 1
 " }}}
 
-" Unite {{{
+" Denite {{{
 
-" simulate ctrlp
-let g:unite_enable_start_insert = 1
-let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-let g:unite_source_history_yank_enable = 1
-
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--noheading --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
+if executable('rg')
+  call denite#custom#var('grep', 'command', ['rg'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'final_opts', [])
 endif
 
-nnoremap [unite] <Nop>
-nmap     <C-f> [unite]
+nnoremap [denite] <Nop>
+nmap     <C-f> [denite]
 
-nnoremap <silent> <C-p>     :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
-nnoremap <silent> [unite]g  :<C-u>Unite
+nnoremap <silent> <C-p>     :<C-u>Denite
+      \ -buffer-name=buffer file/rec<CR>
+nnoremap <silent> [denite]g  :<C-u>Denite
       \ grep<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite
+nnoremap <silent> [denite]r  :<C-u>Denite
       \ -buffer-name=register register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite
+nnoremap <silent> [denite]o  :<C-u>Denite
       \ outline<CR>
-nnoremap <silent> [unite]d  :<C-u>Unite
-      \ -buffer-name=files -default-action=lcd directory_mru<CR>
-nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord
-      \ tag file_rec/async<CR>
-nnoremap <silent> [unite]y  :<C-u>Unite
-      \ history/yank <CR>
-nnoremap <silent> [unite]s  :<C-u>Unite
-      \ -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab
-      \ file_rec:! file file/new file_mru<CR>
+nnoremap <silent> [denite]w  :<C-u>DeniteCursorWord
+      \ tag file/rec<CR>
 
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> jj         <Plug>(unite_insert_leave)
-
-  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-
-  " Disable cursor keys
-  inoremap <buffer> <Up>    <NOP>
-  inoremap <buffer> <Down>  <NOP>
-  inoremap <buffer> <Left>  <NOP>
-  inoremap <buffer> <Right> <NOP>
-  noremap  <buffer> <Up>    <NOP>
-  noremap  <buffer> <Down>  <NOP>
-  noremap  <buffer> <Left>  <NOP>
-  noremap  <buffer> <Right> <NOP>
-endfunction
 " }}}
