@@ -48,3 +48,5 @@ rebase = preserve
 	helper = osxkeychain
 [diff]
 	renameLimit = 2580
+[rebase]
+	autoSquash = true
