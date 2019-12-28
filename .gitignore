@@ -1,5 +1,2 @@
-*.DS_Store
-tags
-.envrc
-.vim/autoload/plug.vim.old
-.vim/plugged/**
+.DS_Store
+.vim/plugged

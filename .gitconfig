@@ -1,6 +1,9 @@
 [user]
   name = Georg Friedrich
   email = georg.friedrich@redbubble.com
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore-global
 [alias]
   co = checkout
   cb = checkout -b
