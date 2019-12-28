@@ -45,7 +45,7 @@
   protocol = https
 
 [pull]
-rebase = preserve
+rebase = merges
 
 [credential]
 	helper = osxkeychain
