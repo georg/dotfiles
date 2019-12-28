@@ -23,6 +23,30 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/rainbow_parentheses.vim'
 Plug 'jpalardy/vim-slime'
+
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1 " Enable deoplete
+
+" begin: deoplete completion sources
+Plug 'Shougo/neco-syntax'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+" end: deoplete completion sources
+
 call plug#end()
 
 syntax enable
@@ -30,12 +54,13 @@ set encoding=utf-8
 set modelines=0
 
 set background=dark
+colorscheme 1989
 let g:solarized_termcolors=256
-colorscheme c64
 
 set number
 set ruler       " show the cursor position all the time
 set cursorline
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 set showcmd     " display incomplete commands
 set undofile
 set wildmenu
