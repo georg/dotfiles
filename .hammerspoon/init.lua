@@ -26,3 +26,15 @@ spoon.SpoonInstall:andUse('TextClipboardHistory', {
 hs.hotkey.bind(mash, 'L', function()
   hs.caffeinate.lockScreen()
 end)
+
+spoon.SpoonInstall:andUse('URLDispatcher', {
+  config = {
+    url_patterns = {
+      { "https?://.*.google.com", "com.google.Chrome" },
+      { "https?://.*.slack.com", "com.slack.Slack" },
+    },
+    default_handler = "org.mozilla.Firefox",
+  },
+  start = true,
+})
+
