@@ -14,7 +14,7 @@ tell application "Terminal"
     set themeFile to themePath & themeName & ".terminal"
 
     (* Set our desired font. *)
-    set fontName to "SourceCodePro-Regular"
+    set fontName to "FiraCode Nerd Font Mono-Regular"
     set fontSize to 12
 
     (* Store the IDs of all the open terminal windows. *)
