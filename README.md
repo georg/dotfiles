@@ -3,8 +3,8 @@
 ## Installation
 
 ```sh
-git clone git://github.com/georg/dotfiles
-./install.sh
+git clone https://github.com/georg/dotfiles
+setup/setup.sh
 ```
 
 ## Thanks
