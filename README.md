@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-git clone https://github.com/georg/dotfiles
+git clone --recurse-submodules https://github.com/georg/dotfiles
 setup/setup.sh
 ```
 
