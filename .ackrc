@@ -1,8 +1,0 @@
---sort-files
-
---type-add=ruby:ext:builder,rake
---type-set=cucumber:ext:feature
---type-set=css:ext:scss
-
---ignore-dir=public/assets
---ignore-dir=public/stylesheets/compiled
