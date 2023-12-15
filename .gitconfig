@@ -1,6 +1,6 @@
 [user]
   name = Georg Friedrich
-  email = georg.friedrich@redbubble.com
+	email = georg@codezero.io
 [core]
   editor = nvim
   excludesfile = ~/.gitignore-global
@@ -41,6 +41,7 @@
   enabled = 1
 [init]
   templatedir = ~/.git_template
+	defaultBranch = main
 [hub]
   protocol = https
 
@@ -53,3 +54,10 @@ rebase = merges
 	renameLimit = 2580
 [rebase]
 	autoSquash = true
+[commit]
+  gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
