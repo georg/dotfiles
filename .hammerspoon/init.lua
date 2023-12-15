@@ -1,16 +1,15 @@
 hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall:updateRepo('default')
 
-hs.window.animationDuration = 0
 local mash = {"cmd", "alt", "ctrl"}
-spoon.SpoonInstall:andUse('MiroWindowsManager', {
-  hotkeys = {
-    up = {mash, "up"},
-    right = {mash, "right"},
-    down = {mash, "down"},
-    left = {mash, "left"},
-    fullscreen = {mash, "c"},
-  },
+hs.loadSpoon("MiroWindowsManager")
+hs.window.animationDuration = 0
+spoon.MiroWindowsManager:bindHotkeys({
+  up = {mash, "up"},
+  right = {mash, "right"},
+  down = {mash, "down"},
+  left = {mash, "left"},
+  fullscreen = {mash, "c"},
 })
 
 spoon.SpoonInstall:andUse('TextClipboardHistory', {
@@ -33,7 +32,7 @@ spoon.SpoonInstall:andUse('URLDispatcher', {
       { "https?://.*.google.com", "com.google.Chrome" },
       { "https?://.*.slack.com", "com.slack.Slack" },
     },
-    default_handler = "org.mozilla.Firefox",
+    default_handler = "com.apple.Safari",
   },
   start = true,
 })
