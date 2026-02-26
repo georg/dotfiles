@@ -1,0 +1,21 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    function fish_should_add_to_history
+        string match -qr "^\s" -- $argv; and return 1
+        return 0
+    end
+end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/georgf/Downloads/google-cloud-sdk/path.fish.inc' ]
+    . '/Users/georgf/Downloads/google-cloud-sdk/path.fish.inc'
+end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/georgf/Downloads/google-cloud-sdk 2/path.fish.inc' ]; . '/Users/georgf/Downloads/google-cloud-sdk 2/path.fish.inc'; end
