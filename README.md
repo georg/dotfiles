@@ -3,8 +3,15 @@
 ## Installation
 
 ```sh
-git clone --recurse-submodules https://github.com/georg/dotfiles
+git clone https://github.com/georg/dotfiles
+cd dotfiles
 setup/setup.sh
+```
+
+## Uninstallation
+
+```sh
+setup/teardown.sh
 ```
 
 ## Thanks
