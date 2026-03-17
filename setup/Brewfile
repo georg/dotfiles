@@ -1,5 +1,6 @@
 brew "stow"
 brew "fish"
+brew "gh"
 cask "1password"
 cask "font-meslo-lg-nerd-font"
 cask "ghostty"
