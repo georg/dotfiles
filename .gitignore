@@ -1,7 +1,6 @@
 .claude/
 .DS_Store
 .vim/plugged
-.config/fish/fish_variables
 .config/fish/functions/
 !.config/fish/functions/cobs.fish
 !.config/fish/functions/cwt.fish
