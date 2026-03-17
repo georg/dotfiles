@@ -54,7 +54,7 @@ set encoding=utf-8
 set modelines=0
 
 set background=dark
-colorscheme 1989
+silent! colorscheme 1989
 let g:solarized_termcolors=256
 
 set number

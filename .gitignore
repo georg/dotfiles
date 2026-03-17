@@ -1,3 +1,11 @@
 .DS_Store
 .vim/plugged
 .config/fish/fish_variables
+.config/fish/functions/
+!.config/fish/functions/cobs.fish
+!.config/fish/functions/cwt.fish
+!.config/fish/functions/cwt-rm.fish
+!.config/fish/functions/k.fish
+!.config/fish/functions/fish_user_key_bindings.fish
+.config/fish/completions/
+.config/fish/conf.d/
